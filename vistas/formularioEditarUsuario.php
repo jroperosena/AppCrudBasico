@@ -1,18 +1,10 @@
-<form class="row g-3" action="../controladores/usuarioCrearControlador.php" method="post">
+<p class="fs-2"> Editar Datos  Usuario </p>
+
+<form class="row g-3" action="../controladores/usuarioEditarControlador.php" method="post">
 <div class="col-12">
-    <label class="form-label">Codigo</label>
-    <input type="text" class="form-control" name="codigo" placeholder="0000" value="<?php echo $codigo ?>" required>
+    <label class="form-label">Codigo: <strong> <?php echo $codigo ?> </strong> </label>
+    <input type="hidden"  name="codigo"  value="<?php echo $codigo ?>" >
   </div>
-
-  <?php 
-
-if (isset($ErrorCodigo))
-    
-     echo "<div class='alert alert-danger' role='alert'> $ErrorCodigo </div>"
-
- 
-?>
-
 
   <div class="col-12">
   <label class="form-label">Nombre</label>
@@ -28,6 +20,6 @@ if (isset($ErrorCodigo))
   </div>
 
   <div class="col-12">
-    <button type="submit" class="btn btn-primary">Sign in</button>
+    <button type="submit" class="btn btn-primary"> Actualizar Datos </button>
   </div>
 </form>

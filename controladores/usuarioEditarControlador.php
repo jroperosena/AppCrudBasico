@@ -16,25 +16,21 @@ if( (isset($_POST['codigo'])) && (!empty($_POST['codigo'])) &&
         $contrasena=$_POST['contrasena'];
 
         $datos = new servicioDatos();
-        $validar = $datos->validarCodigo($codigo);
+        
+        $actualizar = $datos->actualizarUsuario($codigo,$nombre,$correo,$contrasena);
 
-        if (!$validar) { 
-            $inserarUsuario = $datos->crearUsuario($codigo,$nombre,$correo,$contrasena);
-               if ($inserarUsuario) {
+        if ($actualizar) {
                   $listar = new servicioDatos();
                    $listaUsuarios = $listar->obtenerUsuarios();
                    $subVista = "listarUsuarios.php";
                    } else {
-                       $subVista = "formularioCrearUsuario.php";
+                       $subVista = "formularioEditarUsuario.php";
                 }
-         } 
+        } 
          else {
-                $ErrorCodigo = "El codigo ya ".$codigo." existe";
-                $subVista = "formularioCrearUsuario.php"; 
+                
+                $subVista = "formularioEditarUsuario.php"; 
         }
-    }else {
-        $subVista = "formularioCrearUsuario.php";       
-    }
 
     $vista = "crud.php";
     require "../vistas/layout.php"
